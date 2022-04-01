@@ -1,0 +1,5 @@
+print ('Helo World')
+name = input('Ingresa tu nombre porfa we ')
+lastname = input ('Ingresa tu apellido ')
+output= "Hola {1} {0}". format(name, lastname)
+print(output)

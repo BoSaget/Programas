@@ -1,0 +1,16 @@
+RewriteEngine on
+RewriteRule ^a?$ 	index.php
+RewriteRule ^al?$   ALEJANDRA.html	
+RewriteRule ^ce?$   CESAR.html
+RewriteRule ^cy?$   CYRUS.html
+RewriteRule ^er?$   ERNESTO.html
+RewriteRule ^es?$   ESTRELLA.html
+RewriteRule ^fa?$   FANNY.html
+RewriteRule ^j?$    JOEL.html
+RewriteRule ^jo?$   JORDY.html
+RewriteRule ^ma?$   MARCE.html
+RewriteRule ^pe?$   PEDRO.html
+RewriteRule ^zu?$   ZUAZUA.html
+#menu
+RewriteRule ^admi?$ 	/ad.html
+RewriteRule ^copi?$ 	/cop.html

@@ -1,0 +1,6 @@
+d(q, 0, Z0) = {(q, XZ0)}
+d(q, 0, X) = {(q, XX)}
+d(p, 1, X) = {(p, X)}
+d(p, 1, X) = {(p, e)}
+d(p, 1, X) = {(p, e)}
+--Cadena Invalida--
