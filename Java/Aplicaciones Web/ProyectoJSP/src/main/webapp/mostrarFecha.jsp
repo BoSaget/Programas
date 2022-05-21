@@ -13,10 +13,10 @@
     </head>
     <body style = " background-color: #FBEFF4">
         <h1>Le fecha y hora actuales son:</h1>
-        <%--
+        
         <h2><%@ include file = "fecha.jsp"%></h2>
         <h2><%@ include file = "LlamadaJSP.html"%></h2>
-        --%>
         <h2><%@ include file = "texto.txt"%></h2>
+        
     </body>
 </html>
