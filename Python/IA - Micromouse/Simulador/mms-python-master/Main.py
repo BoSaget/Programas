@@ -12,8 +12,10 @@ def main():
     while True:
         if not API.wallLeft():
             API.turnLeft()
+        
         while API.wallFront():
             API.turnRight()
+            
         API.moveForward()
 
 if __name__ == "__main__":
