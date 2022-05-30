@@ -44,24 +44,24 @@ while True:
 
     #Movimiento hacia delante
     recto(motor_der1, motor_der2, motor_izq1, motor_izq2)
-    led_cen.on()
+    led_cen.value(1)
 
     sleep(1)
 
     #Stop
     stop(motor_der1, motor_der2, motor_izq1, motor_izq2)
-    led_cen.off()
+    led_cen.value(0)
 
     sleep(1)
 
     #Movimiento hacia atras
-    led_der.on()
-    led_izq.on()
+    led_der.value(1)
+    led_izq.value(1)
     atras(motor_der1, motor_der2, motor_izq1, motor_izq2)
 
     sleep(1)
     stop(motor_der1, motor_der2, motor_izq1, motor_izq2)
-    led_der.off()
-    led_izq.off()
+    led_der.value(0)
+    led_izq.value(0)
 
     sleep(1)

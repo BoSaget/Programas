@@ -4,13 +4,7 @@ from hcsr04 import HCSR04
 from time import sleep
 import machine
 
-def recto(m1der, m2der, m1izq, m2izq):
-    m1der.value(1)
-    m2der.value(0)
-
-    m1izq.value(1)
-    m2izq.value(0)
-
+#Funciones
 def stop(m1der, m2der, m1izq, m2izq):
     m1der.value(0)
     m2der.value(0)
@@ -18,12 +12,18 @@ def stop(m1der, m2der, m1izq, m2izq):
     m1izq.value(0)
     m2izq.value(0)
 
-def atras(m1der, m2der, m1izq, m2izq):
+def vuelta_der(m1der, m2der, m1izq, m2izq, led):
+    led.value(1)
+    
     m1der.value(0)
     m2der.value(1)
 
-    m1izq.value(0)
-    m2izq.value(1)
+    m1izq.value(1)
+    m2izq.value(0)
+    
+    sleep(0.5)
+    stop(m1der, m2der, m1izq, m2izq)
+    led.value(0)
 
 #Led de salida
 led_der = machine.Pin(15, machine.Pin.OUT)
@@ -37,31 +37,14 @@ motor_der2 = machine.Pin(19, machine.Pin.OUT)
 motor_izq1 = machine.Pin(12, machine.Pin.OUT)
 motor_izq2 = machine.Pin(14, machine.Pin.OUT)
 
-# ESP8266
-#sensor = HCSR04(trigger_pin=12, echo_pin=14, echo_timeout_us=10000)
+# ESP32
+sensor_der = HCSR04(trigger_pin=5, echo_pin=18, echo_timeout_us=10000)
+sensor_cen = HCSR04(trigger_pin=22, echo_pin=23, echo_timeout_us=10000)
+sensor_izq = HCSR04(trigger_pin=25, echo_pin=26, echo_timeout_us=10000)
 
 while True:
-
-    #Movimiento hacia delante
-    recto(motor_der1, motor_der2, motor_izq1, motor_izq2)
-    led_cen.on()
-
-    sleep(1)
-
-    #Stop
-    stop(motor_der1, motor_der2, motor_izq1, motor_izq2)
-    led_cen.off()
-
-    sleep(1)
-
-    #Movimiento hacia atras
-    led_der.on()
-    led_izq.on()
-    atras(motor_der1, motor_der2, motor_izq1, motor_izq2)
-
-    sleep(1)
-    stop(motor_der1, motor_der2, motor_izq1, motor_izq2)
-    led_der.off()
-    led_izq.off()
-
-    sleep(1)
+  
+    vuelta_der(motor_der1, motor_der2, motor_izq1, motor_izq2, led_der)
+    sleep(2)
+    
+    

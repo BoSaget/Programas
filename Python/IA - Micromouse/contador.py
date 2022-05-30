@@ -18,28 +18,28 @@ while True:
     #Cuando es 0 el booton esta presionado
     if (boton1.value() == 0):
         contador = contador + 1
-        led_naranja.on()
+        led_naranja.value(1)()
         time.sleep(1)
-        led_naranja.off()
+        led_naranja.value(0)
 
     elif (boton2.value() == 0):
         if (contador != 0):
             for i in range(0, contador):
-                led_naranja.on()
+                led_naranja.value(1)()
                 time.sleep(1)
-                led_naranja.off()
+                led_naranja.value(0)
                 time.sleep(1)
             contador = 0
         else:
-            led_naranja.on()
-            led_verde.on()
+            led_naranja.value(1)()
+            led_verde.value(1)()
             time.sleep(1)
-            led_naranja.off()
-            led_verde.off()
+            led_naranja.value(0)
+            led_verde.value(0)
 
 
     else:
-        led_verde.on()
+        led_verde.value(1)()
         time.sleep(1)
-        led_verde.off()
+        led_verde.value(0)
         time.sleep(1)

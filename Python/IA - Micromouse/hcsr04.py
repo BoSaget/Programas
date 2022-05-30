@@ -1,10 +1,10 @@
 """Libreria para el sonsro sonico HC-SR04"""
-# Escribe tu código aquí :-)
+# Escribe tu c贸digo aqu铆 :-)
 import machine, time
 from machine import Pin
 
 __version__ = '0.2.0'
-__author__ = 'Roberto Sánchez'
+__author__ = 'Roberto S谩nchez'
 __license__ = "Apache License 2.0. https://www.apache.org/licenses/LICENSE-2.0"
 
 class HCSR04:
