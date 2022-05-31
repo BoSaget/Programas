@@ -12,7 +12,7 @@ def stop(m1der, m2der, m1izq, m2izq):
     m1izq.value(0)
     m2izq.value(0)
 
-def vuelta_der(m1der, m2der, m1izq, m2izq, led):
+def girarDerecha(m1der, m2der, m1izq, m2izq, led):
     led.value(1)
     
     m1der.value(0)
@@ -21,7 +21,7 @@ def vuelta_der(m1der, m2der, m1izq, m2izq, led):
     m1izq.value(1)
     m2izq.value(0)
     
-    sleep(0.5)
+    sleep(0.3)
     stop(m1der, m2der, m1izq, m2izq)
     led.value(0)
 
@@ -44,7 +44,7 @@ sensor_izq = HCSR04(trigger_pin=25, echo_pin=26, echo_timeout_us=10000)
 
 while True:
   
-    vuelta_der(motor_der1, motor_der2, motor_izq1, motor_izq2, led_der)
+    girarDerecha(motor_der1, motor_der2, motor_izq1, motor_izq2, led_der)
     sleep(2)
-    
-    
+
+

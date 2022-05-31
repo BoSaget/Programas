@@ -47,9 +47,10 @@ while True:
     distance_cen = sensor_cen.distance_cm()
     distance_izq = sensor_izq.distance_cm()
 
-    if (distance_cen < 5):
+    if (distance_cen < 11):
         stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
 
     else:
         recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+
 

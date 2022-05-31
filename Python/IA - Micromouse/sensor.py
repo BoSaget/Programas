@@ -22,20 +22,20 @@ while True:
     distance_cen = sensor_cen.distance_cm()
     distance_izq = sensor_izq.distance_cm()
 
-    if(distance_der < 5 or distance_izq < 5 or distance_cen <5 ):
-        if (distance_der < 5):
+    if(distance_der < 10 or distance_izq < 10 or distance_cen < 10 ):
+        if (distance_der < 8):
             led_der.value(1)
 
         else:
             led_der.value(0)
 
-        if (distance_cen < 5):
+        if (distance_cen < 8):
             led_cen.value(1)
 
         else:
             led_cen.value(0)
 
-        if (distance_izq < 5):
+        if (distance_izq < 8):
             led_izq.value(1)
 
         else:
@@ -47,4 +47,5 @@ while True:
         led_izq.value(0)
     #print('Distance:', distance, 'cm')
     #sleep(1)
+
 
