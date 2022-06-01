@@ -6,7 +6,7 @@ data = pd.read_csv("Perceptron_DataSet.csv", header=None)
 #print(data)
 
 #Definiendo variables 
-#----------Pesos------------------
+#----------Pesos----------
 #Pesos iniciales del problema
 pesos = [0.65, 0.38, 0.33]
 #Pesos aletarorios
@@ -18,10 +18,10 @@ for i in range (0, 3):
 
 #print(x)
 
-#---------Tasa deaprendizaje----------
+#----------Tasa deaprendizaje----------
 n = 0.4
 
-#---------Filtrando datos---------
+#----------Filtrando datos----------
 #Extrayendo DataSet
-x0 = pd.read_csv("Perceptron_DataSet.csv", index_col=0)
-print(x0)
+x0 = pd.read_csv("Perceptron_DataSet.csv")
+print(x0.tail())
