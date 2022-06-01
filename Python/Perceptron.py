@@ -1,26 +1,27 @@
-import openpyxl
+import pandas as pd
+import random
 
-def nuevo_peso(pesos, error, x0, x1, x2):
-    taza= 0.4
-    
+#Extrayendo datos
+data = pd.read_csv("Perceptron_DataSet.csv", header=None)
+#print(data)
 
-def activacion(y):
-    if y < 0:
-        return -1
-    else:
-        return 1
-
-path_file = "Perceptron_DataSet.xlsx"
-data = openpyxl.load_workbook(path_file)
-sheet = data.get_sheet_by_name('Sheet1')
-#IMprimiendo el nombre de las columnas
-print(sheet['A1'].value)
-
-#Filtrar datos
-x1 = []
-
+#Definiendo variables 
+#----------Pesos------------------
+#Pesos iniciales del problema
 pesos = [0.65, 0.38, 0.33]
+#Pesos aletarorios
+x = [0, 0, 0]
 
+for i in range (0, 3):
+    aux = random.random()
+    x[i] = format(aux, '.2f')
 
+#print(x)
 
+#---------Tasa deaprendizaje----------
+n = 0.4
 
+#---------Filtrando datos---------
+#Extrayendo DataSet
+x0 = pd.read_csv("Perceptron_DataSet.csv", index_col=0)
+print(x0)
