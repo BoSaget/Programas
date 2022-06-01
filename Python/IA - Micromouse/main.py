@@ -1,3 +1,4 @@
+
 from hcsr04 import HCSR04
 from time import sleep
 import machine
@@ -30,7 +31,7 @@ def giraDerecha(m1der, m2der, m1izq, m2izq, led):
     m1izq.value(1)
     m2izq.value(0)
     
-    sleep(0.2)
+    sleep(0.4)
     stop(m1der, m2der, m1izq, m2izq, led)
 
 def giraIzquierda(m1der, m2der, m1izq, m2izq, led):
@@ -42,7 +43,7 @@ def giraIzquierda(m1der, m2der, m1izq, m2izq, led):
     m1izq.value(0)
     m2izq.value(1)
     
-    sleep(0.2)
+    sleep(0.4)
     stop(m1der, m2der, m1izq, m2izq, led)
 
 #Led de salida
@@ -68,18 +69,29 @@ while True:
   distance_cen = sensor_cen.distance_cm()
   distance_izq = sensor_izq.distance_cm()
   
-  if (distance_der > 9):
+  while (distance_der > 9):
+    sleep(0.4)
     stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
     giraDerecha(motor_der1, motor_der2, motor_izq1, motor_izq2, led_der)
+    
+    recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+    sleep(0.4)
+    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
     sleep(1)
+    
+    distance_der = sensor_der.distance_cm()
    
   while (distance_cen < 9 and distance_der < 9):
+    sleep(0.4)
     stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
     giraIzquierda(motor_der1, motor_der2, motor_izq1, motor_izq2, led_izq)
+    
+    recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+    sleep(0.4)
+    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
     sleep(1)
     
     distance_der = sensor_der.distance_cm()
     distance_cen = sensor_cen.distance_cm()
   
   recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
-
