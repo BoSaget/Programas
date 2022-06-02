@@ -13,7 +13,6 @@ def solve(cadena):
                 
     cadena = "".join(cadena_nueva)
     return cadena      
-    
 
 cadena = input("")
 solve(cadena)

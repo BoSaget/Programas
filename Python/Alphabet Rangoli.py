@@ -1,5 +1,4 @@
 #a = 96 en codigo ASCII
-
 def print_rangoli(size):
     letra = 96 + size
     alto = (size*2)-1
