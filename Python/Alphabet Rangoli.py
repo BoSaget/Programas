@@ -56,6 +56,6 @@ def print_rangoli(size):
                 lista[indice_der - (2 * (j + 1 ))] = chr(letra - j) 
                 lista[indice_izq + (2 * (j + 1))] = chr(letra - j)
         print(cadena)
-    
+
 n = int(input())
 print_rangoli(n)
