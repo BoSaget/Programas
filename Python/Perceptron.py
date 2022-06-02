@@ -15,7 +15,6 @@ x = [0, 0, 0]
 for i in range (0, 3):
     aux = random.random()
     x[i] = format(aux, '.2f')
-
 #print(x)
 
 #----------Tasa deaprendizaje----------
