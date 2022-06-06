@@ -1,4 +1,3 @@
-
 from hcsr04 import HCSR04
 from time import sleep
 import machine
@@ -19,8 +18,6 @@ def stop(m1der, m2der, m1izq, m2izq, led):
 
     m1izq.value(0)
     m2izq.value(0)
-    
-    #sleep(0.5)
   
 def giraDerecha(m1der, m2der, m1izq, m2izq, led):
     led.value(1)
@@ -31,7 +28,8 @@ def giraDerecha(m1der, m2der, m1izq, m2izq, led):
     m1izq.value(1)
     m2izq.value(0)
     
-    sleep(0.4)
+    #Tiempo estimado para dar vuelta de 45 grados
+    sleep(0.5)
     stop(m1der, m2der, m1izq, m2izq, led)
 
 def giraIzquierda(m1der, m2der, m1izq, m2izq, led):
@@ -43,7 +41,8 @@ def giraIzquierda(m1der, m2der, m1izq, m2izq, led):
     m1izq.value(0)
     m2izq.value(1)
     
-    sleep(0.4)
+    #Tiempo estimado para dar vuelta de 45 grados
+    sleep(0.5)
     stop(m1der, m2der, m1izq, m2izq, led)
 
 #Led de salida
@@ -69,29 +68,44 @@ while True:
   distance_cen = sensor_cen.distance_cm()
   distance_izq = sensor_izq.distance_cm()
   
-  while (distance_der > 9):
-    sleep(0.4)
-    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
-    giraDerecha(motor_der1, motor_der2, motor_izq1, motor_izq2, led_der)
-    
-    recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
-    sleep(0.4)
-    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
-    sleep(1)
-    
+  while (distance_der > 10):
     distance_der = sensor_der.distance_cm()
+    
+    #Dejamos que siga recto durante medio segundo, para asi no chocar con algo
+    sleep(0.2)
+    
+    #Detenemos el carro para que asi no cheque con algo
+    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+    
+    #Comprobamos nuevamente si hay una pared
+    if(distance_der > 10):
+      giraDerecha(motor_der1, motor_der2, motor_izq1, motor_izq2, led_der)
+      
+      #Se va derecho para asi no se quede como bucle al haber dado la vuelta
+      recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+      sleep(0.3)
+      stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+      sleep(1)
    
-  while (distance_cen < 9 and distance_der < 9):
-    sleep(0.4)
-    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
-    giraIzquierda(motor_der1, motor_der2, motor_izq1, motor_izq2, led_izq)
-    
-    recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
-    sleep(0.4)
-    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
-    sleep(1)
-    
+  while (distance_cen < 10 and distance_der < 10):
     distance_der = sensor_der.distance_cm()
     distance_cen = sensor_cen.distance_cm()
   
+    #Dejamos que siga recto durante medio segundo, para asi no chocar con algo
+    sleep(0.2)
+    
+    #Detenemos el carro para que asi no cheque con algo
+    stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+    
+    #Comprobamos nuevamente si hay una pared
+    if((distance_cen < 10 and distance_der < 10)):
+      giraIzquierda(motor_der1, motor_der2, motor_izq1, motor_izq2, led_izq)
+      
+      #Se va derecho para asi no se quede como bucle al haber dado la vuelta
+      recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+      sleep(0.3)
+      stop(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+      sleep(1)
+  
   recto(motor_der1, motor_der2, motor_izq1, motor_izq2, led_cen)
+
