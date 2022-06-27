@@ -14,5 +14,5 @@
     </head>
     
     <body>
-        <div class="bg-secondary">
+        <div class="bg-secondary.bg-gradient">
         <h1>Header</h1>
