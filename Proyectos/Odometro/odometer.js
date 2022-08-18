@@ -10,19 +10,19 @@
   
     FORMAT_MARK_HTML = '<span class="odometer-formatting-mark"></span>';
   
-    DIGIT_FORMAT = '(,ddd).dd';
+    DIGIT_FORMAT = 'd';
   
     FORMAT_PARSER = /^\(?([^)]*)\)?(?:(.)(d+))?$/;
   
     FRAMERATE = 30;
   
-    DURATION = 2000;
+    DURATION = 1000;
   
     COUNT_FRAMERATE = 20;
   
     FRAMES_PER_VALUE = 2;
   
-    DIGIT_SPEEDBOOST = .5;
+    DIGIT_SPEEDBOOST = 1;
   
     MS_PER_FRAME = 1000 / FRAMERATE;
   
@@ -37,6 +37,8 @@
     requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
   
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+    console.log("Toy probando, toy shikito")
   
     createFromHTML = function(html) {
       var el;
@@ -73,7 +75,7 @@
         precision = 0;
       }
       if (!precision) {
-        return Math.round(val);
+        return val;
       }
       val *= Math.pow(10, precision);
       val += 0.5;
@@ -227,7 +229,6 @@
           val = val.replace((_ref = this.format.radix) != null ? _ref : '.', '<radix>');
           val = val.replace(/[.,]/g, '');
           val = val.replace('<radix>', '.');
-          val = parseFloat(val, 10) || 0;
         }
         return round(val, this.format.precision);
       };
