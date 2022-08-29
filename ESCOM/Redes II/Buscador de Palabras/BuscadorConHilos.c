@@ -4,7 +4,7 @@
 #include <pthread.h>
 
 void * funcion(void * argumento);
-
+void * buscar(void * archivo);
 
 void main(int argc, char **argv){
 

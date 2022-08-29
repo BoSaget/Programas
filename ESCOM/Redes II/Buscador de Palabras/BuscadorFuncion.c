@@ -4,7 +4,6 @@
 
 int main(void)
 {
-
       FILE *Fd;
 
       char archivo[30],palabra[30],texto[80];
