@@ -18,7 +18,7 @@ void main(int argc, char **argv){
         printf("No ha introducido el número de hilos a crear \n");
         exit(0);
     }
-    printf("Iniciando hilos de manera dinamica");
+    printf("Iniciando hilos de manera dinamica \n");
     //Se obtiene cantidad de hilos a usar
     int numero_hilos = atoi(argv[1]);
 
@@ -27,7 +27,6 @@ void main(int argc, char **argv){
 
     for(int i = 0; i <numero_hilos; i++)
     {
-        
         //Se crea el hilo
         pthread_create(&hilos[i], NULL, funcion, saludo);
     }
