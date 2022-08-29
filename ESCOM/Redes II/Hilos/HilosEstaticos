@@ -10,6 +10,7 @@ void main(int argc, char **argv){
     //Se Declara Hilo
     pthread_t hilos;
     char * saludo = "Hola Mundo";
+    void * var;
 
     //Se solicita cantidad de hilos
     if(argc != 2)
@@ -26,13 +27,21 @@ void main(int argc, char **argv){
         //Se crea el hilo
         pthread_create(&hilos, NULL, funcion, saludo);
     }
+
+    for(int j = 0; j < numero_hilos; j++){
+        pthread_join(hilos, &var);
+        printf("Dato Recibido %s\n", (char * ) var);
+    }
     
     printf("Fin \n");
 }
 
 void * funcion (void * cadena)
 {
-    printf("Soy, el hilo dice: %s \n", cadena);
+    pthread_t  hilo_prueba = (pthread_t ) cadena;
+    char* salida = "Ya salí";
 
-    return NULL;
+    printf("Soy, el hilo %d dice: %s \n", pthread_self(),cadena);
+
+    pthread_exit((void *) salida);
 }
