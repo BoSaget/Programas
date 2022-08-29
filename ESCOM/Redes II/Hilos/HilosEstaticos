@@ -21,6 +21,7 @@ void main(int argc, char **argv){
 
     //Se obtiene cantidad de hilos a usar
     int numero_hilos = atoi(argv[1]);
+    printf("Iniciando hilos de manera Estatica");
 
     for(int i = 0; i <numero_hilos; i++)
     {

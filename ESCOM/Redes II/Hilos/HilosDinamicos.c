@@ -18,7 +18,7 @@ void main(int argc, char **argv){
         printf("No ha introducido el número de hilos a crear \n");
         exit(0);
     }
-
+    printf("Iniciando hilos de manera dinamica");
     //Se obtiene cantidad de hilos a usar
     int numero_hilos = atoi(argv[1]);
 
