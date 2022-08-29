@@ -39,6 +39,9 @@ void main(int argc, char **argv){
         printf("Dato Recibido %s\n", (char * ) var);
     }
     
+    //Se debe liberar memoria
+    free(hilos);
+
     printf("Fin \n");
 }
 
