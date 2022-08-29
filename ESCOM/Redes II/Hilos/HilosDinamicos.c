@@ -33,7 +33,7 @@ void main(int argc, char **argv){
 
     for(int j = 0; j < numero_hilos; j++)
     {
-        //Regresa del hilo terminado y obtiene el valor
+        //Regresa del hilo terminado y obtiene el valor de retorno
         pthread_join(hilos[j], &var);
         //Mensaje de confirmación de regreso
         printf("Dato Recibido %s\n", (char * ) var);
@@ -52,6 +52,6 @@ void * funcion (void * cadena)
 
     printf("Soy, el hilo %d dice: %s \n", pthread_self(),cadena);
 
-    //Termina el hilo y regresa un valor
+    //Termina el hilo y manda el valor de retorno
     pthread_exit((void *) salida);
 }
