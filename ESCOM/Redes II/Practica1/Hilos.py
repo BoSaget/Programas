@@ -1,1 +1,0 @@
-print]("Aqui va la practica 1")
