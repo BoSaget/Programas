@@ -3,86 +3,57 @@
 #include <string.h>
 #include <pthread.h>
 
-void * fibo(void * dato);
+void  fibo(int dato);
 
 void main(int argc, char **argv)
 {
-    //Se Declara Hilo
-    pthread_t * hilos;
-    void * retorno;
-    int * datos;
+    int * arreglo;
+    int tam;
 
-    int * serie;
-
-    int dato;
-
-    //Se solicita cantidad de hilos
     if(argc != 2)
     {
-        printf("No ha introducido el número de hilos a crear \n");
-        exit(0);
+        printf("Por favor ingrese los numeros que necesite \n");
     }
 
-    //printf("Iniciando hilos de manera dinamica \n");
-    //Se obtiene cantidad de hilos a usar
-    
-    int numero_hilos = atoi(argv[1]);
+    tam = argc -1;
+    //Se asigna el tamaño del arreglo de manera dinamica
+    arreglo = (int *) malloc(tam * sizeof (int));
 
-    //Se guarda el espacio de manera dinamicaa
-    hilos = (pthread_t *) malloc(numero_hilos * sizeof(pthread_t));
-    //Se genera arreglo con el numero de datos a ingresar
-    datos = (int * ) malloc (numero_hilos * sizeof (int));
 
-    for(int i = 0; i <numero_hilos; i++)
+    //Se pasan los valores al arreglo
+    for(int i = 0; i < tam; i ++)
     {
-        printf("Ingrese el valor a buscar \n");
-        //Se solicita los valores
-        scanf("%d", &dato);
-        datos[i] = dato;
+        arreglo[i] = atoi(argv[i+1]);
     }
 
-    for(int i = 0; i<numero_hilos; i++)
+    //Se analiza dato por dato
+    for(int i = 0; i<tam; i++)
     {
-        //Se crea el hilo
-        pthread_create(&hilos[i], NULL, fibo, &datos[i]);
+        fibo(arreglo[i]);
     }
 
-    for(int j = 0; j < numero_hilos; j++)
-    {
-        //Regresa del hilo terminado y obtiene el valor de retorno
-        pthread_join(hilos[j], &retorno);
-        //Mensaje de confirmación de regreso
-        printf("Dato Recibido %s\n", (char * ) retorno);
-    }
-    
-    //Se debe liberar memoria
-    free(hilos);
-
-    printf("Fin \n");
 }
 
-void * fibo (void * dato)
+void fibo(int dato)
 {
-    
-    int * valor = (int * ) dato;
+    int numActual = 0;
+    int * serie;
 
-    int actual = 0;
-    int * arreglo;
+    serie = (int *) malloc (dato * sizeof (int));
+    serie[0] = 0;
+    serie[1] = 1;
 
-    arreglo = (int *) malloc (2 * sizeof(int));
-    arreglo[0] = 0;
-    arreglo[1] = 1;
 
-    for(int i = 2; i <= *valor;  i++)
+    for(int i = 2; i < dato; i++)
     {
-        if(actual < *valor)
+        if(numActual < dato)
         {
-            actual = arreglo[i-1] + arreglo[i-2];
-            arreglo = (int *) malloc (1 * sizeof(int));
-            arreglo[i] = actual;
+            numActual = serie[i-2] + serie[i-1];
+
+            printf("%d ", numActual);
+            serie[i] = numActual;
         }
-        
+        printf("\n");
+        exit;
     }
-    //Termina el hilo y manda el valor de retorno
-    pthread_exit((void *) arreglo);
 }
