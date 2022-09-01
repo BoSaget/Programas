@@ -50,7 +50,7 @@ void main(int argc, char **argv)
         pthread_join(hilos[i], &retorno);
         serie = (int *) retorno;
 
-        aux = sizeof(serie) / sizeof(int);
+        aux = serie[0];
 
 
         //Imprime la serie
@@ -58,7 +58,14 @@ void main(int argc, char **argv)
 
         for(int i = 0; i < aux; i++)
         {
-            printf("%d ", serie[i]);
+            if(i == 0)
+            {
+                printf("0 ");
+            }
+            else
+            {
+                printf("%d ", serie[i]);
+            }
         }
         printf("\n");
     
@@ -117,6 +124,9 @@ void * fibo(void * datoVoid)
 
             //Se guarda el tamaño del arreglo
             tam = i;
+
+            //Se guarda el tamaño del arreglo en la primera posicion
+            serie[0] = tam;
         }
 
         
