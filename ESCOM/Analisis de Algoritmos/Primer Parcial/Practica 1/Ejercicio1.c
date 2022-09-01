@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-int generar_arreglo(int pasos);
-void analizar_arreglo(int * arreglo, int tam, int *pasos);
+int generar_arreglo(int pasos, int tam);
+int analizar_arreglo(int * arreglo, int tam, int pasos);
 void graficar(int pasos, int tam);
 
 
@@ -11,26 +11,28 @@ int main (void)
 {
     int pasos;
 
-    pasos = generar_arreglo(0);
-
-    printf("Número de pasos: %d \n", pasos);
+    for(int i = 1; i <= 100 ; i++)
+    {
+        pasos = generar_arreglo(0, i*10);
+        printf("Número de pasos: %d \n", pasos);
+    }
 }
 
-int generar_arreglo(int pasos)
+int generar_arreglo(int pasos, int tam)
 {
     int * arreglo;
-    int tam;
     int numero;
     int limite;
     pasos++;
 
-
     srand(time(NULL));
     pasos++;
 
+    /*
     printf("Ingrese el tamaño del arreglo \n");
     scanf("%d", &tam);
     pasos += 2;
+    */
 
     //Se genera arreglo del tamaño indicado
     arreglo = (int *) malloc(tam * sizeof (int));
@@ -53,26 +55,29 @@ int generar_arreglo(int pasos)
         printf("--Número: %d ingresado --\n", arreglo[i]);
         pasos++;
     }
+    pasos++;
 
-    analizar_arreglo(arreglo, tam, &pasos);
+    pasos = pasos + analizar_arreglo(arreglo, tam, pasos);
 
+    pasos++;
     //Se libera memoria
     free(arreglo);
-    pasos++;
-    pasos++;
 
     graficar(pasos, tam);
 
+    pasos++;
     return pasos;
 }
 
-void analizar_arreglo(int * arreglo, int tam, int * pasos)
+int analizar_arreglo(int * arreglo, int tam, int pasos)
 {
     pasos++;
     //Se analiza la primera mitad del arreglo
     for(int x = 0; x < tam/2; x++)
     {
-        pasos+=2;
+        pasos++;
+
+        pasos++;
         //Se analiza la segunda mitad del arreglo
         for(int y = tam/2; y < tam; y++)
         {
@@ -82,23 +87,31 @@ void analizar_arreglo(int * arreglo, int tam, int * pasos)
             {
                 pasos++;
 
+                pasos++;
                 printf("\nDato: %d encontrado en posiciones: %d y %d \n", arreglo[x], x, y );
-                pasos+=2;
-                return;
+
+                pasos++;
+                return pasos;
             }    
         }
+        pasos++;
     }
     pasos++;
+
+    pasos++;
     printf("\nNo se encontró ningun dato repetido \n");
+
+    pasos++;
+    return pasos;
 }
 
 void graficar(int pasos, int tam)
 {
     FILE * archivo;
 
-    archivo = fopen("Ejercicio1.csv", "w+");
+    archivo = fopen("Ejercicio1.csv", "a+");
 
-    fprintf("%d, %d\n", pasos, tam);
+    fprintf(archivo, "%d, %d \n",pasos, tam);
 
     fclose(archivo);
 }
