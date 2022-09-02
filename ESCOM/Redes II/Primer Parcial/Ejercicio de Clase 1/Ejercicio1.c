@@ -50,101 +50,95 @@ void main(int argc, char **argv)
         pthread_join(hilos[i], &retorno);
         serie = (int *) retorno;
 
-        aux = serie[0];
-
 
         //Imprime la serie
-        printf("Serie Recibida: \n");
+        printf("Serie Recibida:\n");
+        aux = serie [0];
 
-        for(int i = 0; i < aux; i++)
+        //Imprime la serie
+        for(int j = 0; j < aux; j++)
         {
-            if(i == 0)
+            if(j == 0 || aux == 0)
             {
                 printf("0 ");
             }
+
             else
             {
-                printf("%d ", serie[i]);
+                printf("%d ", serie[j]);
             }
         }
         printf("\n");
-    
     }
     
     //Se debe liberar memoria
     free(hilos);
 
-    printf("Fin \n");
-
+    printf("\nFin \n");
 }
 
 void * fibo(void * datoVoid)
 {
-    int numActual = 0;
     int * serie;
-    int tam;
     int dato = *((int *) datoVoid);
+    int numActual = 0;
+    int tam;
 
-
-    if(dato < 8)
+    if(dato == 0)
     {
-        //Se cre el espaico necesari, puesot que para los digitos menores a 7 el arreglo es mas grande  que los datos
-        serie = (int *) malloc (7 * sizeof (int));
-        tam = 7;
+        //Se le asigna el valor del primer dato
+        serie = (int *) malloc (1 * sizeof (int));
+        serie[0] = 1;
     }
-
+    
+    else if( dato == 1)
+    {
+        //Se asignan los primeros 2 valores para la serie
+        serie = (int *) malloc (2 * sizeof (int));
+        serie[0] = 2;
+        serie[1] = 1;
+    }
+    
     else
     {
-        //Se crea el espaico necesario para los datos
-        serie = (int *) malloc (dato * sizeof (int));
-        tam = dato;
-    }
+        //Se asignan los primeros 2 valores para la serie
+        serie = (int *) malloc (2 * sizeof (int));
+        serie[0] = 0;
+        serie[1] = 1;
 
-    //Se gebneran los primeros 2 valores
-    serie[0] = 0;
-    serie[1] = 1;
-
-    if(dato <= 1 && dato > -1)
-    {
-        tam = 2;
-        
-        //Se reduce el tamaño del arreglo a los valores justos
-        serie = (int * ) realloc (serie, 2 * sizeof (int));
-    }
-
-    else
-    {
-        for(int i = 2; i < tam; i++)
+        //Delimita para los primeros 7 digitos
+        if(dato < 8 && dato > 1)
         {
-        
-        if(numActual >= dato)
-        {
-            //Se reduce el tamaño del arreglo a los valores justos
-            serie = (int * ) realloc (serie, i * sizeof (int));
-
-            //Se guarda el tamaño del arreglo
-            tam = i;
-
-            //Se guarda el tamaño del arreglo en la primera posicion
-            serie[0] = tam;
+            tam = 8;
         }
 
-        
-        numActual = serie[i-2] + serie[i-1];
-
-        //Se guarda el valor de la serie en el arreglo
-        serie[i] = numActual;        
+        //Resto de los posibles npumeros
+        else
+        {
+            tam = dato;
         }
-    }
 
-    /*
-    Se comprueba que la serie este correcta
-    for(int i = 0; i < tam; i++)
-    {
-        printf("%d ", serie[i]);
+        for(int i = 2; i < tam; i ++)
+        {
+            //Delimita la serie
+            if(numActual >= dato)
+            {
+                tam = i;
+
+                //Guarda el tamaño del arreglo en primera posicion
+                serie[0] = i;
+            }
+            else
+            {
+                numActual = serie[i-2] + serie[i-1];
+
+                //Se aumenta el valor de la memoria
+                serie = (int *) realloc (serie, (i+1) * sizeof (int));
+                serie[i] = numActual;
+            }        
+        }
+
     }
-    printf("\n");
-    */
 
     pthread_exit((void *) serie);
     free(serie);
