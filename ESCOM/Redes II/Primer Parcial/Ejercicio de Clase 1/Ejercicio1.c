@@ -84,6 +84,7 @@ void * fibo(void * datoVoid)
     int numActual = 0;
     int tam;
 
+    //Si el valor ingresado es 0
     if(dato == 0)
     {
         //Se le asigna el valor del primer dato
@@ -91,6 +92,7 @@ void * fibo(void * datoVoid)
         serie[0] = 1;
     }
     
+    //Si el valor ingresado es 1
     else if( dato == 1)
     {
         //Se asignan los primeros 2 valores para la serie
@@ -99,6 +101,7 @@ void * fibo(void * datoVoid)
         serie[1] = 1;
     }
     
+    //Si el valor es mayor
     else
     {
         //Se asignan los primeros 2 valores para la serie
