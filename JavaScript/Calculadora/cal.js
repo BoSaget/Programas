@@ -1,5 +1,5 @@
 const botonNumero = document.getElementsByName("numero")
-//console.log(botonNumero)
+console.log(botonNumero)
 
 const botonOperador = document.getElementsByName("operador")
 //console.log(botonOperador)
@@ -16,12 +16,10 @@ botonNumero.forEach(function(boton)
 {
     boton.addEventListener('click', function()
     {
-        //agregarNumero(boton.innerText)
-        alert(boton.innerText)
+        agregarNumero(boton.innerText)
     })
 })
 
-/*
 botonOperador.forEach(function(boton)
 {
     boton.addEventListener('click', function()
@@ -41,4 +39,3 @@ botonResultado.addEventListener("click", function()
     Resultado()
     ActualizarDisplay()
 })
-*/
