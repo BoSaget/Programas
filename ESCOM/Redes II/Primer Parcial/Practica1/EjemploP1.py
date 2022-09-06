@@ -82,4 +82,8 @@ for i in range(len(nombres)):
 
 #Guarda como archivo los resultados de ambos hilos
 for i in range(len(nombres)):
+<<<<<<< HEAD
     io.imsave("resultados/"+nombres[i].split('.')[0]+"_verde.png",canalesG[i])
+=======
+    io.imsave("resultados/"+nombres[i].split('.')[0]+"_verde.png",canalesG[i])
+>>>>>>> fd85758d6d8790b90b33b8d0349676dde7d3d265
