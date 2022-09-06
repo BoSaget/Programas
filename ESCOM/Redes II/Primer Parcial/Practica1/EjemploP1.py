@@ -13,7 +13,7 @@ canalesG=list()
 
 def filtroRG(str_imagen,indice):
 
-    imagen = io.imread("origen/"+str_imagen)
+    imagen = io.imread("imagenes/"+str_imagen)
     canal_rojo = deepcopy(imagen)
 
     canal_rojo[:,:,1]=0 #quita el verde
@@ -33,7 +33,7 @@ def filtroRG(str_imagen,indice):
 
 def filtroBG(str_imagen,indice):
 
-    imagen = io.imread("origen/"+str_imagen)
+    imagen = io.imread("imagenes/"+str_imagen)
     canal_azul = deepcopy(imagen)
 
     canal_azul[:,:,0]=0 #quita el rojo
@@ -52,7 +52,7 @@ def filtroBG(str_imagen,indice):
     io.imsave("resultados/"+nombre+"_azul.png",canal_azul)
 
 #obtiene los nombres de la carpeta "origen" como una lista
-def ls(ruta = getcwd()+"/origen"):
+def ls(ruta = getcwd()+"/imagenes"):
     return [arch.name for arch in os.scandir(ruta) if arch.is_file()]
 
 
@@ -62,7 +62,7 @@ hilosA=list()
 
 #prepara lista global,tendran acceso compartido
 for i in range(len(nombres)):
-    imagen = io.imread("origen/"+nombres[i])
+    imagen = io.imread("imagenes/"+nombres[i])
     canal_verde = deepcopy(imagen)
     canalesG.append(canal_verde)
 
