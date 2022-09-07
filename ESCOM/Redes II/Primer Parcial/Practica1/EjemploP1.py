@@ -13,7 +13,7 @@ canalesG=list()
 
 def filtroRG(str_imagen,indice):
 
-    imagen = io.imread("/ESCOM/Redes II/Primer Parcial/Practica1/imagenes/"+str_imagen)
+    imagen = io.imread("ESCOM/Redes II/Primer Parcial/Practica1/imagenes/"+str_imagen)
     canal_rojo = deepcopy(imagen)
 
     canal_rojo[:,:,1]=0 #quita el verde
@@ -29,11 +29,11 @@ def filtroRG(str_imagen,indice):
     canalesG[indice][:mitad,:,2]=0 #quita el azul
 
     nombre=str_imagen.split('.')[0] #obtiene nombre y quita la extension
-    io.imsave("/ESCOM/Redes II/Primer Parcial/Practica1/resultados/"+nombre+"_rojo.png",canal_rojo)#Nombra y guarda la nueva imagen en la carpeta "resultados"
+    io.imsave("ESCOM/Redes II/Primer Parcial/Practica1/resultados/"+nombre+"_rojo.png",canal_rojo)#Nombra y guarda la nueva imagen en la carpeta "resultados"
 
 def filtroBG(str_imagen,indice):
 
-    imagen = io.imread("imagenes/"+str_imagen)
+    imagen = io.imread("ESCOM/Redes II/Primer Parcial/Practica1/imagenes/"+str_imagen)
     canal_azul = deepcopy(imagen)
 
     canal_azul[:,:,0]=0 #quita el rojo
@@ -49,7 +49,7 @@ def filtroBG(str_imagen,indice):
     canalesG[indice][mitad:,:,2]=0 #quita el azul
 
     nombre=str_imagen.split('.')[0] #obtiene nombre y quita la extension
-    io.imsave("resultados/"+nombre+"_azul.png",canal_azul)
+    io.imsave("ESCOM/Redes II/Primer Parcial/Practica1/resultados/"+nombre+"_azul.png",canal_azul)
 
 #obtiene los nombres de la carpeta "origen" como una lista
 def ls(ruta = getcwd()+"/ESCOM/Redes II/Primer Parcial/Practica1/imagenes"):
@@ -62,7 +62,7 @@ hilosA=list()
 
 #prepara lista global,tendran acceso compartido
 for i in range(len(nombres)):
-    imagen = io.imread("/ESCOM/Redes II/Primer Parcial/Practica1/imagenes/"+nombres[i])
+    imagen = io.imread("ESCOM/Redes II/Primer Parcial/Practica1/imagenes/"+nombres[i])
     canal_verde = deepcopy(imagen)
     canalesG.append(canal_verde)
 
@@ -82,4 +82,4 @@ for i in range(len(nombres)):
 
 #Guarda como archivo los resultados de ambos hilos
 for i in range(len(nombres)):
-    io.imsave("/ESCOM/Redes II/Primer Parcial/Practica1/resultados/"+nombres[i].split('.')[0]+"_verde.png",canalesG[i])
+    io.imsave("ESCOM/Redes II/Primer Parcial/Practica1/resultados/"+nombres[i].split('.')[0]+"_verde.png",canalesG[i])
