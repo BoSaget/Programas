@@ -11,23 +11,41 @@ int main (void)
     int pasos;
     int a;
     int b;
+    int mayor;
 
     srand(time(NULL));
 
-    for(int i = 1; i <= 10 ; i++)
+    for(int i = 1; i <= 100 ; i++)
     {
         a = rand() % 9999;
         b = rand() % 9999;
+
+        if(a > b)
+        {
+            mayor = a;
+        }
+
+        else if( b > a)
+        {
+            mayor = b;
+        }
+
+        else
+        {
+            mayor = a;
+        }
+
         printf("Numeros asignados %d y %d \n", a, b);
         pasos = euclides(a, b);
         printf("Número de pasos: %d \n", pasos);
+        graficar(mayor, pasos);
     }
 }
 
 int euclides(int a, int b)
 {
     int pasos;
-
+    
     pasos++;
     int mcd;
 
@@ -44,16 +62,18 @@ int euclides(int a, int b)
     printf("El mcd fue: %d\n", a);
 
     pasos++;
+
+
     return pasos;  
 }
 
-void graficar(int pasos, int tam)
+void graficar(int x, int y)
 {
     FILE * archivo;
 
-    archivo = fopen("Ejercicio1.csv", "a+");
+    archivo = fopen("Ejercicio2.csv", "a+");
 
-    fprintf(archivo, "%d, %d \n",pasos, tam);
+    fprintf(archivo, "%d, %d \n", x, y);
 
     fclose(archivo);
 }

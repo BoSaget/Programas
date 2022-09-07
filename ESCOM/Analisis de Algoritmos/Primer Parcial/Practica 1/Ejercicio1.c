@@ -63,7 +63,7 @@ int generar_arreglo(int pasos, int tam)
     //Se libera memoria
     free(arreglo);
 
-    graficar(pasos, tam);
+    graficar(tam, pasos);
 
     pasos++;
     return pasos;
@@ -105,13 +105,13 @@ int analizar_arreglo(int * arreglo, int tam, int pasos)
     return pasos;
 }
 
-void graficar(int pasos, int tam)
+void graficar(int x, int y)
 {
     FILE * archivo;
 
     archivo = fopen("Ejercicio1.csv", "a+");
 
-    fprintf(archivo, "%d, %d \n",pasos, tam);
+    fprintf(archivo, "%d, %d \n", x, y);
 
     fclose(archivo);
 }
