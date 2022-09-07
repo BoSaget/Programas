@@ -1,3 +1,14 @@
+/*
+	INSTITUTO POLITECNICO NACIONAL
+	ESCUELA SUPERIOR DE COMPUTO
+	ALUMNO: TEJEDA MOYAO LEON FRANCISCO
+	GRUPO:3CV12
+	MATERIA:ANALISIS DE ALGORITMOS
+	PROFESOR: BENJAMIN LUNA BENOSO
+	FECHA:7/SEP/2022
+	PRACTICA 1:ALGORITMO DE EUCLIDES
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -17,8 +28,8 @@ int main (void)
 
     for(int i = 1; i <= 100 ; i++)
     {
-        a = rand() % 9999;
-        b = rand() % 9999;
+        a = rand() % 999;
+        b = rand() % 999;
 
         if(a > b)
         {
