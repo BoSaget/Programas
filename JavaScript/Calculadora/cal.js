@@ -1,16 +1,16 @@
 const botonNumero = document.getElementsByName("numero")
-console.log(botonNumero)
 
 const botonOperador = document.getElementsByName("operador")
-//console.log(botonOperador)
 
-const botonClear = document.getElementsByName("clear")
-//console.log(botonClear)
+const botonClear = document.getElementsByName("borrar")
 
-const botonResultado = document.getElementsByName("resultado")
-//console.log(botonResultado)
+const botonResultado = document.getElementsByName("igual")
 
 let resultado = document.getElementById("resultado")
+
+let operacionActual = ''
+let operacionAnterior = ''
+let operacion = undefined
 
 botonNumero.forEach(function(boton)
 {
@@ -28,14 +28,77 @@ botonOperador.forEach(function(boton)
     })
 })
 
-botonClear.addEventListener("click", function()
+botonClear[0].addEventListener('click', function()
 {
     Borrar()
     ActualizarDisplay()
 })
 
-botonResultado.addEventListener("click", function()
+botonResultado[0].addEventListener('click', function()
 {
-    Resultado()
+    Calcular()
     ActualizarDisplay()
 })
+
+function Operacion(operador)
+{
+    if(operacionActual === '') return 
+    if(operacionAnterior !== '')
+    {
+        Calcular()
+    }
+    operacion = operador.toString()
+    operacionAnterior = operacionActual
+    operacionActual = ""
+}
+
+function Calcular()
+{
+    let calculo
+    const anterior = parseFloat(operacionAnterior)
+    const actual = parseFloat(operacionActual)
+
+    if(isNaN(anterior) || isNaN(actual)) return
+
+    switch(operacion)
+    {
+        case '+':
+            calculo = anterior + actual
+            break
+        
+        case '-':
+            calculo = anterior - actual
+            break
+            
+        case 'X':
+            calculo = anterior * actual
+            break
+                
+        case '/':
+            calculo = anterior / actual
+            break
+        default:
+            return
+    }
+    operacionActual =  calculo
+    operacion = undefined
+    operacionAnterior = ""
+}
+
+function agregarNumero(numero)
+{
+    operacionActual = operacionActual.toString() + numero.toString()
+    ActualizarDisplay()
+}
+
+function Borrar()
+{
+    operacionActual = ""
+    operacionAnterior = ""
+    operacion = undefined
+}
+
+function ActualizarDisplay()
+{
+    resultado.value = operacionActual
+}
