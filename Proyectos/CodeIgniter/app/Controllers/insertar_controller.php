@@ -30,23 +30,16 @@
         public function add(){
             
             //compruebo si se a enviado submit
-            if($this->input->get("submit")){
-            
-            //llamo al metodo add
-            $add=$this->usuarios_model->add(
+            if($this->input->get("submit"))
+            {
+                //llamo al metodo add
+                $add=$this->usuarios_model->add(
                         $this->input->get("nombre"),
                         $this->input->get("apellido"),
                         $this->input->get("numero"),
                         $this->input->get("boleta")
-                    );
+                );
             }
-            if($add==true){
-                //Sesion de una sola ejecución
-                $this->session->set_flashdata('correcto', 'Usuario añadido correctamente');
-            }else{
-                $this->session->set_flashdata('incorrecto', 'Usuario añadido correctamente');
-            }
-            
             //redirecciono la pagina a la url por defecto
             redirect(base_url());
         }

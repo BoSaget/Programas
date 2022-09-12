@@ -2,7 +2,7 @@
         <h2>Probando Base de datos</h2>
 
         <div>
-                <form action="<?=base_URL('insertar_controller/add');?>" method="get">
+                <form action="<?=base_URL("insertar_controller/add");?>" method="get">
                         <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
                                 <label for="nombre">Nombre</label>
