@@ -1,0 +1,5 @@
+#E1E1E1 - Blanco
+#DC1212 - Naranja
+#8F0000 - Rojo
+#560202 - Carmesi
+#191919 - Negro

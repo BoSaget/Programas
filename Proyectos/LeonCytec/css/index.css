@@ -1,0 +1,16 @@
+html {
+    height: 100%;
+}
+body{
+    background: linear-gradient(grey, #191919);
+    height: 100%;
+}
+nav{
+    background-color: #560202;
+}
+
+.navbar-toggler{
+    border-width: 4px;
+    border-color: #8F0000;
+    background-color: #8F0000;
+}
