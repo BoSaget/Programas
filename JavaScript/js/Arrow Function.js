@@ -1,4 +1,6 @@
 //Funciones - Arrow Function
+//Las arrow function solo se pueden usar en function expresion
+//Se puede omitir el return si solo se tiene una linea de codigo
 
 const sumar = (numero1, numero2 = 1) => {
     return numero1 + numero2

@@ -1,4 +1,4 @@
-//Scope
+//Scope alcance de variable
 
 const precio = 300
 
