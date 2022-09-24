@@ -4,6 +4,7 @@ const url = "https://jsonplaceholder.typicode.com/comments"
 
 const consultarAPI = () => {
     //Promises, un valor que va a estar disponible ahora o en un futuro
+    //.then siginifica que esta usando promises
     fetch(url)
         .then( respuesta => respuesta.json())
         .then( (resultado) => {
