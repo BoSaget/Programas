@@ -10,11 +10,13 @@ function App() {
   //Dentro del return solo serian metodos
   return (
     //Fragment
-    <>
+    <div className="container mx-auto mt-20">
        <Header />
-       <Formulario />
-       <Listado_Pacientes />
-    </>
+       <div className="mt-12 md:flex">
+        <Formulario />
+        <Listado_Pacientes />
+       </div>
+    </div>
   )
 }
 
