@@ -5,20 +5,28 @@ function Formulario() {
           Seguimiento pacientes Formulario
         </h2>
 
-        <p className="font-bold text-2xl text-center mt-5">
+        <p className="font-bold text-2xl text-center mt-4">
           Añadir Pacientes{" "}
           <span className="text-blue-600">
             Administrar
           </span>
 
-          <form className="text-xl bg-gray-300 shadow-lg mt-5 rounded-md w-96 py-3">
-            <div className="text-lg-center text-blue-400 block">
-              <label htmlFor="mascota">Nombre Mascota</label>
+          <form className="text-xl bg-gray-300 shadow-lg rounded-md mt-3 pt-2 pb-4">
+            <div className="text-lg-center text-blue-400">
+              <label class="block mt-1"htmlFor="mascota">Nombre Mascota</label>
               <input 
                 id="mascota"
                 type="text"
                 placeholder="Nombre de la mascota" 
-                className=" bg-gray-300 rounded-lg border-2 border-black mt-2 placeholder-blue-400"
+                className=" bg-gray-300 rounded-lg border-2 border-black outline-green-500 placeholder-blue-400 mt-2 p-2"
+              />
+
+              <label class="block mt-1"htmlFor="2">Buebos</label>
+              <input 
+                id="2"
+                type="text"
+                placeholder="Be" 
+                className=" bg-gray-300 rounded-lg border-2 border-black outline-green-500 placeholder-blue-400 mt-2 p-2"
               />
             </div>
           </form>
