@@ -4,8 +4,11 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
+#include <errno.h>
+#include <unistd.h>
 
-int maint(int argc, char ** argv)
+int main(int argc, char ** argv)
 {
     //Index
     char buffer[100];
@@ -35,12 +38,12 @@ int maint(int argc, char ** argv)
     //Pasa la cadena de formato char a formato de red
     servidor.sin_addr.s_addr = inet_pton(AF_INET, argv[1], &(servidor.sin_addr));
 
-    /*Para pasar la cadnea de formato de red a formato de char
+    /*Para pasar la cadena de formato de red a formato de char
     char str(INET_ADDRSSTRLEN);
     servidor.sin_addr = inet_ntop(AF_INET, &(servidor.sin_addr), str INET_ADDRSSTRLEN);
     */
 
-   int isConnect = connect(mysocket, struct sockaddr *(&servidor), sizeof(servidor));
+   int isConnect = connect(mysocket, (struct sockaddr*) &servidor, sizeof(servidor));
 
    if(isConnect == -1)
    {
@@ -56,7 +59,7 @@ int maint(int argc, char ** argv)
    int mensaje = recv(mysocket, buffer, sizeof(buffer), 0);
     buffer[mensaje] = '\0';
 
-    printf("Mensaje recibido por el servidor");
+    printf("Mensaje recibido por el servidor \n");
     close(mysocket);
 
 return 0;
