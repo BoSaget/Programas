@@ -20,7 +20,7 @@ int main (void)
 {
     int pasos;
 
-    for(int i = 1; i <= 20 ; i++)
+    for(int i = 1; i <= 40 ; i++)
     {
         //Sacará los primeros 20 valores de Fibonacci
         pasos = fibonacci(0, i);
