@@ -8,13 +8,13 @@ function initMap() {
       center: marcador,
     });
 
-    const verde = "./Puntos/verde.png"
+    const verde = "./Puntos/rojo.png"
 
     // The marker, positioned at Uluru
     const marker = new google.maps.Marker({
       position: marcador,
       map: map,
-      icon: verde
+      icon: verde     
     });
   }
   
