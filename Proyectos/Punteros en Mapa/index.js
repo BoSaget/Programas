@@ -27,6 +27,13 @@ function initMap() {
 
 }
 window.initMap = initMap
+
+$.ajax({
+  url: 'index.php',
+  success: function(data) {
+    $('.result').html(data);
+  }
+});
 //setInterval ejecuta el comando cada  espera 5 segundos
 const intervalo = setInterval(initMap, 4000, window.initMap)
   
