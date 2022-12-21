@@ -11,6 +11,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <array>
 
 using namespace std;
 
@@ -35,43 +36,58 @@ return C;
 int *  greedy(int* C, int r, int tamArreglo)
 {
     int * S;
-    int f, pos, bandera, act, ant, tamS, aux;
+    int f, pos, bandera, tamS, aux;
     f = r;
     bandera=0;
     pos = 0;
-    act = 0;
-    ant = 0;
     tamS = 0;
     aux = 0;
     
     //La variable auxiliar indica que ya se recorrió todo el arrelo C
-    while(aux < tamArreglo)
-    {
-        if(C[pos] <= f)
+    for(int i =0 ; i < tamArreglo; i++)
+    {   
+        if(C[i] > f)
         {
-            pos++;
-        }
-        
-        else
-        {
-            if(tamS == 0)
+            if(i > 0)
             {
-                S = (int *) malloc(1 * sizeof (int));
-                S[tamS] = C[pos-1];
-                tamS++;    
-            }
-            else
-            {
-                S = (int *) realloc (S, (tamS+1) * sizeof (int));
-                S[tamS] = C[pos-1];
+                if(tamS == 0)
+                {
+                    S = (int *) malloc(2 * sizeof (int));
+
+                    //Guarda el tamaño en la primera posición
+                    S[tamS] = 0;
+                    tamS++;
+                }
+                else
+                {
+                    S = (int *) realloc (S, (tamS+1) * sizeof (int));
+                }
+                
+                S[tamS] = C[i-1];
+                f = r + S[tamS];
+                cout << "---Nueva f. :" << f << " ---" << endl; 
                 tamS++;
             }
-            f = f + C[pos-1];
+
+            else 
+            {
+                cout << "No es encontró una solución" << endl;
+                S = (int *) malloc(sizeof (int));
+
+                //Guarda el tamaño en la primera posición
+                S[0] = 0;
+                return S;
+            }
         }
-        
-        aux++;
-        
+       
     }
+    //Condicional para checar si el ultimo valor cumplia la condición y no entró
+    if(S[tamS-1] != C[tamArreglo-1] && C[tamArreglo-1] < f)
+    {
+        S[tamS] = C[tamArreglo-1];
+        tamS++;
+    }
+    S[0] = tamS;
 return S;
 }
 
@@ -83,48 +99,55 @@ int main()
     */
     int r, tamArreglo, d, tamArregloS;
     int *C, *S;
-    //El tamaño del arreglo será de 30
-    tamArreglo = 30;
+    
+    //El tamaño del arreglo será de 10
+    tamArreglo = 10;
     C = (int *) malloc(tamArreglo * sizeof (int));
     
-    int Caux [] = {0,29,36,50,52,66,71,85,100,117,127,131};
+    //Caso inicial del problema
+    int C2 [] = {0,29,36,50,52,66,71,85,100,117,127,129};
+    int r2=30;
+    int tamArreglo2 = 12;
     
     srand(time(NULL));
     
     for(int i=0; i<1;i++)
     {
-        /*
+
         r = rand() % 100;
-        //cout << numero << endl;
-        for(int j = 0; j<30 ;j++)
+        cout << "r: " << r << endl;
+        for(int j = 0; j<tamArreglo ;j++)
         {
             //Se generan número aleatorios para llenar el arreglo C
-            d = rand()%500;
+            d = rand()%200;
             C[j]=d;
         }
+    
+       
         
+        
+        //Se manda a ordenar el arreglo y lo imprime
+        C=ordenarArreglo(C, tamArreglo);
         cout << "Arreglo C" << endl;
         for(int j = 0; j <  tamArreglo; j++)
         {
             cout << C[j] << endl;
         }
         
-        //Se manda a ordenar el arreglo
-        C=ordenarArreglo(C, tamArreglo);
-        */
-        r=30;
         
-        tamArreglo = 12;
+        S=greedy(C, r, tamArreglo);
+        //S=greedy(C2, r2, tamArreglo2);
         
-        S=greedy(Caux, r, tamArreglo);
-        
-        tamArregloS = sizeof(S)/sizeof(S[0]);
-        
-        cout << "Arreglo solución" << endl;
-        for(int j = 0; j <  tamArregloS; j++)
+        if(S[0] != 0)
         {
-            cout << S[j] << endl;
-        }
+            tamArregloS =  S[0];
+
+            cout << "Arreglo solución" << endl;
+            for(int j = 1; j < tamArregloS; j++)
+            {
+                cout << S[j] << endl;
+            }
+        } 
     }
 
     return 0;
