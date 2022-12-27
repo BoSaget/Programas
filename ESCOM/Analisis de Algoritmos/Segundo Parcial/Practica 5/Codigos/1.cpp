@@ -43,30 +43,39 @@ int *  greedy(int* C, int r, int tamArreglo)
     tamS = 0;
     aux = 0;
     
+    //Crea un arreglo de 2 posiciones
+    S = (int *) malloc(2 * sizeof (int));
+
+    //Guarda el tamaño en la primera posición
+    S[tamS] = 0;
+    tamS++;
+    
     //La variable auxiliar indica que ya se recorrió todo el arrelo C
     for(int i =0 ; i < tamArreglo; i++)
     {   
-        if(C[i] > f)
+        if(C[i] >= f)
         {
             if(i > 0)
             {
-                if(tamS == 0)
-                {
-                    S = (int *) malloc(2 * sizeof (int));
-
-                    //Guarda el tamaño en la primera posición
-                    S[tamS] = 0;
-                    tamS++;
-                }
-                else
-                {
-                    S = (int *) realloc (S, (tamS+1) * sizeof (int));
-                }
+                //si un número cumple la condición, se cambiará a un nueov espacio mas un arreglo
+				S = (int *) realloc (S, (tamS+1) * sizeof (int));
                 
-                S[tamS] = C[i-1];
-                f = r + S[tamS];
-                cout << "---Nueva f. :" << f << " ---" << endl; 
-                tamS++;
+                //Condicionales para cuando es igual a f o menor
+	            if(C[i] == f)
+	            {
+	            	S[tamS] = C[i];
+	                f = r + S[tamS];
+	                cout << "---Nueva f. :" << f << " ---" << endl; 
+	                tamS++;
+				}
+				
+				else if(C[i-1] < f )
+	            {
+	            	S[tamS] = C[i-1];
+	                f = r + S[tamS];
+	                cout << "---Nueva f. :" << f << " ---" << endl; 
+	                tamS++;
+				}
             }
 
             else 
@@ -79,14 +88,22 @@ int *  greedy(int* C, int r, int tamArreglo)
                 return S;
             }
         }
-       
+        
     }
     //Condicional para checar si el ultimo valor cumplia la condición y no entró
-    if(S[tamS-1] != C[tamArreglo-1] && C[tamArreglo-1] < f)
+    if(S[tamS-1] != C[tamArreglo-1] && C[tamArreglo-1] < f && tamS > 2)
     {
         S[tamS] = C[tamArreglo-1];
         tamS++;
     }
+    
+	//Condicional en donde la f es mayor a todos lo números del arreglo
+    if(tamS == 1 && C[tamArreglo-1] < f)
+    {
+		S[tamS] = C[tamArreglo-1];
+		tamS++;
+	}
+    
     S[0] = tamS;
 return S;
 }
@@ -106,7 +123,7 @@ int main()
     
     //Caso inicial del problema
     int C2 [] = {0,29,36,50,52,66,71,85,100,117,127,129};
-    int r2=30;
+    int r2=150;
     int tamArreglo2 = 12;
     
     srand(time(NULL));
@@ -115,7 +132,7 @@ int main()
     {
 
         r = rand() % 100;
-        cout << "r: " << r << endl;
+        //cout << "r: " << r << endl;
         for(int j = 0; j<tamArreglo ;j++)
         {
             //Se generan número aleatorios para llenar el arreglo C
@@ -127,16 +144,17 @@ int main()
         
         
         //Se manda a ordenar el arreglo y lo imprime
-        C=ordenarArreglo(C, tamArreglo);
+        /*
+		C=ordenarArreglo(C, tamArreglo);
         cout << "Arreglo C" << endl;
         for(int j = 0; j <  tamArreglo; j++)
         {
             cout << C[j] << endl;
         }
+        */
         
-        
-        S=greedy(C, r, tamArreglo);
-        //S=greedy(C2, r2, tamArreglo2);
+        //S=greedy(C, r, tamArreglo);
+        S=greedy(C2, r2, tamArreglo2);
         
         if(S[0] != 0)
         {
