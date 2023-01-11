@@ -10,16 +10,17 @@ typedef struct NODO
 	int* nodos_conectados;
 	int conexiones;
 	struct NODO * siguiente;
-}*nodo;
+}nodo;
 
-nodo grafo;
+nodo *grafo;
 
 void insertar_nodo()
 {
 	int id_nodo,aux;
 	
-	nodo grafo_aux, nuevo_nodo;
-	nuevo_nodo =(nodo) malloc(sizeof(nodo));
+	nodo * grafo_aux;
+	nodo * nuevo_nodo;
+	nuevo_nodo =(nodo *) malloc(sizeof(nodo));
 	
 	cout << "--Favor de ingresar el id del nodo -- " << endl;
 	cin >> id_nodo;
@@ -49,7 +50,7 @@ void insertar_nodo()
 
 bool exite_nodo(int id_nodo)
 {
-	nodo grafo_aux;
+	nodo * grafo_aux;
 	grafo_aux = grafo;
 	
 	while(id_nodo != grafo_aux->id)
@@ -69,7 +70,8 @@ void insertar_arista()
 	nodo1 = 0;
 	nodo2 = 0;
 	
-	nodo grafo_aux,grafo_aux2;
+	nodo * grafo_aux;
+	nodo * grafo_aux2;
 	grafo_aux = grafo;
 	grafo_aux2 = grafo;
 	
@@ -145,7 +147,7 @@ void insertar_arista()
 
 void mostrar_tabla()
 {
-	nodo grafo_aux;
+	nodo * grafo_aux;
 	grafo_aux = grafo;
 	
 	cout << "-- Tabla de adyacenc�a--" << endl;

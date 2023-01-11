@@ -10,5 +10,5 @@ typedef struct NODO
 	int* nodos_conectados;
 	int conexiones;
 	struct NODO * siguiente;
-}*nodo;
+}nodo;
 

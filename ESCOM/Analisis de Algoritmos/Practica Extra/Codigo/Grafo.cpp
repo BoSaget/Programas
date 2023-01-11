@@ -1,13 +1,14 @@
 #include "Grafo.h"
 
-nodo grafo;
+nodo *grafo;
 
 void insertar_nodo()
 {
 	int id_nodo,aux;
 	
-	nodo grafo_aux, nuevo_nodo;
-	nuevo_nodo =(nodo) malloc(sizeof(nodo));
+	nodo * grafo_aux;
+	nodo * nuevo_nodo;
+	nuevo_nodo =(nodo *) malloc(sizeof(nodo));
 	
 	cout << "--Favor de ingresar el id del nodo -- " << endl;
 	cin >> id_nodo;
@@ -37,7 +38,7 @@ void insertar_nodo()
 
 bool exite_nodo(int id_nodo)
 {
-	nodo grafo_aux;
+	nodo * grafo_aux;
 	grafo_aux = grafo;
 	
 	while(id_nodo != grafo_aux->id)
@@ -57,7 +58,8 @@ void insertar_arista()
 	nodo1 = 0;
 	nodo2 = 0;
 	
-	nodo grafo_aux,grafo_aux2;
+	nodo * grafo_aux;
+	nodo * grafo_aux2;
 	grafo_aux = grafo;
 	grafo_aux2 = grafo;
 	
@@ -86,7 +88,7 @@ void insertar_arista()
 		return;
 	}
 	
-	//Conexión de ida
+	//Conexiï¿½n de ida
 	if(grafo_aux->id != nodo1)
 	{
 		grafo_aux = grafo_aux->siguiente;
@@ -106,7 +108,7 @@ void insertar_arista()
 		grafo_aux->conexiones = arreglo+1;
 	}
 	
-	//Conexión de vuelta
+	//Conexiï¿½n de vuelta
 	if(grafo_aux2->id != nodo2)
 	{
 		grafo_aux2 = grafo_aux2->siguiente;
@@ -133,10 +135,10 @@ void insertar_arista()
 
 void mostrar_tabla()
 {
-	nodo grafo_aux;
+	nodo * grafo_aux;
 	grafo_aux = grafo;
 	
-	cout << "-- Tabla de adyacencía--" << endl;
+	cout << "-- Tabla de adyacencï¿½a--" << endl;
 	
 }
 
@@ -153,7 +155,7 @@ void menu()
 	while(opcion < 9)
 	{
 		
-		cout << "Favor de seleccionar una opción" << endl;
+		cout << "Favor de seleccionar una opciï¿½n" << endl;
 		cout << "1- Ingresar nodo" << endl;
 		cout << "2- Ingresar arista" << endl;
 		cout << "3- Ver tabla de adyacencia" << endl;
