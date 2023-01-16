@@ -114,8 +114,6 @@ void insertar_arista()
 	
 	
 	system("pause");
-	
-	
 }
 
 void mostrar_tabla()
@@ -152,12 +150,11 @@ int ciclo(int nodos)
 	
 	while(grafo_aux->id != ruta[0])
 	{
-		if(grafo_aux == NULL)
+		if(grafo_aux->siguiente == NULL)
 		{
 			return -1;
 		}
 		grafo_aux = grafo_aux->siguiente;
-		cout << "HEy";
 	}
 	
 	inicio = grafo_aux;
@@ -226,7 +223,7 @@ void menu()
 				
 				if(hamiltoniano == -1)
 				{
-					cout << "No se encontró nodo de cabecera"<< endl;
+					cout << "No se encontrï¿½ nodo de cabecera"<< endl;
 				}
 				
 				else if(hamiltoniano == 0)
