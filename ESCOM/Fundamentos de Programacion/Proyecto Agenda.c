@@ -47,9 +47,11 @@ void guardarEnArchivo(registroAgenda* agenda, int registros)
 	
     else
     {
-    	for(i = 0; i < registros; i++) 
+    	fprintf(archivo, "FECHA, HORA, ACTIVIDAD\n");
+		for(i = 0; i < registros; i++) 
 		{
-	        fprintf(archivo, "%s,%s,%s\n", agenda[i].fecha, agenda[i].hora, agenda[i].actividad);
+	        
+			fprintf(archivo, "%s,%s,%s\n", agenda[i].fecha, agenda[i].hora, agenda[i].actividad);
 	    }
 	    
 	    printf("Registros guardados correctamente en el archivo.\n");
