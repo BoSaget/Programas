@@ -1,6 +1,8 @@
-#include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <time.h>
+
+using namespace std;
 
 int img[500][500];
 int repetidos[256];
@@ -36,7 +38,7 @@ void graficar(int x, int y)
 {
     FILE * archivo;
 
-    archivo = fopen("Recursion.csv", "a+");
+    archivo = fopen("Ej2-5.csv", "a+");
 
     fprintf(archivo, "%d, %d \n", x, y);
 
@@ -79,11 +81,12 @@ int main (void)
 	{
 		if(repetidos[i] > 0)
 		{
-			printf ("\n El valor %d está repetido: %d", i, repetidos[i]);
+			printf ("\n El valor %d estï¿½ repetido: %d", i, repetidos[i]);
 			aux++;
 		}
 	}
 	printf("\n%d", aux);
 	*/
+	printf("Archivo creado");
 return 0;
 }
