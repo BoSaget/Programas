@@ -27,6 +27,7 @@ int funcion(int cx[], int cy[], int len)
         {
             m=aux;
             pasos++;
+            //printf("Nueva pendiente mayor hasta el momento: %d \n", m);
         }
         pasos++;
     }
@@ -52,6 +53,8 @@ int main (void)
     for(int i=10; i<1000; i+=10)
     {
     	m=funcion(cx,cy, i);
+    	//printf("Mayor pendiente encontrada es: %d \n", m);
+    	//printf("");
     	printf("%d;%d\n", i, pasos);
     	pasos = 0;
 	}

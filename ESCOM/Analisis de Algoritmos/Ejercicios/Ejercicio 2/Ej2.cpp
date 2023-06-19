@@ -45,6 +45,13 @@ void funcion(int fil, int col)
 		}
 		pasos++;
 	}
+	
+	/*
+	for(int i =0; i<256; i++)
+	{
+		printf("El número %d se repitio %d\n", i, repetidos[i]);
+	}
+	*/
 }
 
 int main (void)
