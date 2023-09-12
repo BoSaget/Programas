@@ -42,8 +42,8 @@ for %%i in (%arreglo%) do (
 set /a "prom=sum / largo"
 
 :: Se procede a mostrar los resultados
-echo El valor Máximo fue: %min%
-echo El valor Minimo fue: %max%
+echo El valor Minimo fue: %min%
+echo El valor Máximo fue: %max%
 echo El promeido fue: %prom%
 
 endlocal
