@@ -70,14 +70,15 @@ int main()
         sleep(2);
     }
 
-    
     //Se imprime el valor final
     printf("Valor final de la memoria: %d\n", *shared_data);
     
-
     // Desvincular y eliminar la memoria compartida
     shmdt(shared_data);
     shmctl(shm_id, IPC_RMID, NULL);
+
+    //Se imprime el valor final despues de desvincular la memoria
+    printf("Valor agregado: %d\n", *shared_data);
 
 return 0;
 }
