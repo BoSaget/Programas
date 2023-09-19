@@ -17,13 +17,14 @@ int main()
     key_t key = ftok("shared_memory_example", 65); // Generar una clave única
 
     // Crear o abrir la memoria compartida
+    //shmget devuelve el identificador de memoria compartida
     shm_id = shmget(key, sizeof(int), IPC_CREAT | 0666);
     if (shm_id == -1) {
         perror("shmget");
         exit(1);
     }
 
-    // Adjuntar la memoria compartida al espacio de direcciones del proceso
+    // Adjunta la memoria compartida al espacio de direcciones del proceso
     int *shared_data = (int*)shmat(shm_id, NULL, 0);
     if (shared_data == (int*)(-1)) {
         perror("shmat");
@@ -36,7 +37,7 @@ int main()
     //La funcion fork() regresa -1 si hubo algún problema al crear el proceso
     if (pid < 0) 
     {
-        fprintf(stderr, "Error al crear el proceso hijo\n");
+        printf("Error al crear el proceso hijo\n");
         exit(1);
     }
 
