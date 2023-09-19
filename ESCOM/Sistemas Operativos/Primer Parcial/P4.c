@@ -40,7 +40,7 @@ int main()
         exit(1);
     }
 
-    //LA función fork() regresa 0 si es un proceso hijo
+    //La función fork() regresa 0 si es un proceso hijo
     else if (pid == 0)
     {
         printf("Proceso hijo (%d) - Variable compartida: %d\n", getpid(), *shared_data);
@@ -71,7 +71,7 @@ int main()
     }
 
     
-    //Se imprimme el 
+    //Se imprime el valor final
     printf("Valor final de la memoria: %d\n", *shared_data);
     
 
