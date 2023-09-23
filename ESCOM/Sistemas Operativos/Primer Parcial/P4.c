@@ -1,3 +1,8 @@
+/*
+Programa hecho por: Leon Francisco Tejeda Moyao
+Sistemas Operativos Grupo 4CV2
+Practica 4: "Zonas de datos entre procesos vinculados"
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h> //Define las caracteristicas de implementación de POSIX
@@ -79,7 +84,7 @@ int main()
     shmctl(shm_id, IPC_RMID, NULL);
 
     //Se imprime el valor final despues de desvincular la memoria
-    printf("Valor agregado: %d\n", *shared_data);
+    //printf("Valor agregado: %d\n", *shared_data); Esta linea está comentada porque la acceder a la memoria se muestra un segmentation fault
 
 return 0;
 }
