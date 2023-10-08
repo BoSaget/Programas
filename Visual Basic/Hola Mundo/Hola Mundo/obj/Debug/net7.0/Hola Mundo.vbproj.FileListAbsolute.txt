@@ -1,0 +1,14 @@
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\bin\Debug\net7.0\Hola Mundo.exe
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\bin\Debug\net7.0\Hola Mundo.deps.json
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\bin\Debug\net7.0\Hola Mundo.runtimeconfig.json
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\bin\Debug\net7.0\Hola Mundo.dll
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\bin\Debug\net7.0\Hola Mundo.pdb
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\Hola Mundo.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\Hola Mundo.AssemblyInfoInputs.cache
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\Hola Mundo.AssemblyInfo.vb
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\Hola Mundo.vbproj.CoreCompileInputs.cache
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\Hola Mundo.dll
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\refint\Hola Mundo.dll
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\Hola Mundo.pdb
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\Hola Mundo.genruntimeconfig.cache
+D:\Programas\Visual Basic\Hola Mundo\Hola Mundo\obj\Debug\net7.0\ref\Hola Mundo.dll
