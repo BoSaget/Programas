@@ -49,8 +49,15 @@ struct process {
 // Luego, solicita el tiempo de llegada y tiempo de rafaga de cada proceso y los almacena en la estructura correspondiente.
 void get_input(struct process p[]) {
     int i;
-    printf("Ingrese el nï¿½mero de procesos: ");
+    printf("Ingrese el nï¿½mero de procesos (menor a 100): ");
     scanf("%d", &n);
+
+    if (n <= 0 || n > 100) 
+    {
+        printf("Se ha excedido del máximo o el minimo de procesos\n");
+        exit(1);
+    }
+
     for(i = 0; i < n; i++) {
         p[i].pid = i + 1;
         printf("Ingrese el tiempo de llegada del proceso %d: ", p[i].pid);
@@ -64,7 +71,7 @@ void get_input(struct process p[]) {
 // Calcula el ratio de respuesta de cada proceso utilizando la fï¿½rmula del algoritmo HRRN y los almacena en la estructura correspondiente 
 void calculate_response_ratio(struct process p[], int sum_burst_time) {
     int i;
-    for(i = 1; i < n; i++) {
+    for(i = 0; i < n; i++) {
         p[i].response_ratio = (p[i].waiting_time + p[i].burst_time) / p[i].burst_time;
     }
 }
@@ -135,6 +142,11 @@ int main(int argc, char const *argv[]) {
     
     // obtener la entrada del usuario y guardarla en la estructura del proceso
     get_input(p);
+
+    if(n < 0 || n > 100)
+    {
+        return 0;
+    }
 
     // calcular el tiempo de espera para cada proceso
     calculate_waiting_time(p);
