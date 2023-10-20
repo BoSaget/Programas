@@ -1,4 +1,5 @@
 from machine import Pin, reset
+from hcsr04 import HCSR04
 import network
 import socket
 import time
@@ -53,6 +54,10 @@ banio = Pin(23, Pin.OUT)
 alarma = Pin(22, Pin.OUT)
 entrada = Pin(33, Pin.OUT)
 puerta = Pin(32, Pin.OUT)
+
+#Sensor de proximidad
+sensor = HCSR04(trigger_pin=5, echo_pin=18, echo_timeout_us=10000)
+
 #Página Web
 def web_page():  
     html = """
@@ -238,9 +243,16 @@ while True:
         if request.find('/?puerta=on') == 6:
             print('PUERTA: ENCENDIDO')
             puerta.value(1)
+
         elif request.find('/?puerta=off') == 6:
             print('PUERTA: APAGADO')
             puerta.value(0)
+
+        if(puerta.value() == 0):
+            if(sensor.distance_cm() < 5):
+                puerta.value(1)
+            else:
+                puerta.value(0)
         
         conn.send('HTTP/1.1 200 OK\n')
         conn.send('Content-Type: text/html\n')
