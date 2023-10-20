@@ -15,7 +15,7 @@ gc.collect()
 ssid = 'TV!' #Nombre de la red wifi
 key = '5553690373' #Contraseña
 
-indicador = Pin(0, Pin.OUT)
+indicador = Pin(2, Pin.OUT)
 wlan = network.WLAN(network.STA_IF)
 if not wlan.isconnected():
     wlan.active(True)
