@@ -56,7 +56,7 @@ entrada = Pin(33, Pin.OUT)
 puerta = Pin(32, Pin.OUT)
 
 #Sensor de proximidad
-sensor = HCSR04(trigger_pin=5, echo_pin=18, echo_timeout_us=10000)
+#sensor = HCSR04(trigger_pin=18, echo_pin=17, echo_timeout_us=10000)
 
 #Página Web
 def web_page():  
@@ -164,6 +164,14 @@ def web_page():
                 <br>
             </div>
             
+            <div class="col-span-6">
+                <br>
+                <button class="w-full h-12 px-6 text-indigo-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800" onclick="window.location.href='/?luces=on'">Encender todas las luces</button>
+                <br><br>
+                <button class="w-full h-12 px-6 text-indigo-100 transition-colors duration-150 bg-yellow-700 rounded-lg focus:shadow-outline hover:bg-yellow-800" onclick="window.location.href='/?luces=off'">Apagar todas las luces</button>
+                <br>
+            </div>
+            
         </div>
 	</div>
 </body>
@@ -247,12 +255,28 @@ while True:
         elif request.find('/?puerta=off') == 6:
             print('PUERTA: APAGADO')
             puerta.value(0)
+            
+        if request.find('/?luces=on') == 6:
+            print('LUCES: ENCENDIDAS')
+            comedor.value(1)
+            cocina.value(1)
+            cuarto2.value(1)
+            cuarto1.value(1)
+            banio.value(1)
+            alarma.value(1)
+            entrada.value(1)
+            puerta.value(1)
 
-        if(puerta.value() == 0):
-            if(sensor.distance_cm() < 5):
-                puerta.value(1)
-            else:
-                puerta.value(0)
+        elif request.find('/?luces=off') == 6:
+            print('LUCES: APAGADAS')
+            comedor.value(0)
+            cocina.value(0)
+            cuarto2.value(0)
+            cuarto1.value(0)
+            banio.value(0)
+            alarma.value(0)
+            entrada.value(0)
+            puerta.value(0)        
         
         conn.send('HTTP/1.1 200 OK\n')
         conn.send('Content-Type: text/html\n')
