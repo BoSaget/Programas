@@ -44,7 +44,7 @@ int main() {
 
     // Inicializa los semáforos.
     sem_init(&jaula->sem_comida, 1, MAX_COMIENDO);
-    sem_init(&jaula->sem_rueda, 1, MAX_COMIENDO);
+    sem_init(&jaula->sem_rueda, 1, 1);
 
     for (int i = 0; i < NUM_POLLOS; i++) {
         
