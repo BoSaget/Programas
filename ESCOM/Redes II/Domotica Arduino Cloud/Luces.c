@@ -43,10 +43,29 @@ void setup() {
 void loop() {
   ArduinoCloud.update();
   delay(500);
+  if(calendario.isActive() && switch_puerta == false)
+  {
+    digitalWrite(luz_puerta, HIGH);
+  }
+  else if(switch_puerta == true)
+  {
+    digitalWrite(luz_puerta, LOW);
+  }
 }
 
 void onCalendarioChange()  {
-  // Add your code here to act upon Calendario change
+  /*
+  if(calendario.isActive())
+  {
+    switch_puerta=true;
+    digitalWrite(luz_puerta, HIGH);
+  }
+  else
+  {
+    switch_puerta=false;
+    digitalWrite(luz_puerta, LOW);
+  }
+  */
 }
 
 void onSwitchPuertaChange()  {
