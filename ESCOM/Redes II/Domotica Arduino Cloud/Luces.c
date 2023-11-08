@@ -49,16 +49,6 @@ void onCalendarioChange()  {
   // Add your code here to act upon Calendario change
 }
 
-void onSwitchAlarmaChange()  {
-  // Add your code here to act upon SwitchAlarma change
-  if(switch_alarma){
-    digitalWrite(luz_alarma, HIGH);
-  }
-  else{
-    digitalWrite(luz_alarma, LOW);
-  }
-}
-
 void onSwitchPuertaChange()  {
   // Add your code here to act upon SwitchPuerta change
   if(switch_puerta){
@@ -68,30 +58,52 @@ void onSwitchPuertaChange()  {
     digitalWrite(luz_puerta, LOW);
   }
 }
-/*
-  Since SwitchLuces is READ_WRITE variable, onSwitchLucesChange() is
-  executed every time a new value is received from IoT Cloud.
-*/
+
+void onSwitchComedorChange()  {
+  // Add your code here to act upon SwitchPuerta change
+  if(switch_comedor){
+    digitalWrite(luz_comedor, HIGH);
+  }
+  else{
+    digitalWrite(luz_comedor, LOW);
+  }
+}
+
+void onSwitchBanioChange()  {
+  // Add your code here to act upon SwitchPuerta change
+  if(switch_banio){
+    digitalWrite(luz_banio, HIGH);
+  }
+  else{
+    digitalWrite(luz_banio, LOW);
+  }
+}
 void onSwitchLucesChange()  {
   // Do something
   if(switch_luces){
     digitalWrite(luz_comedor, HIGH);
+    switch_comedor=true;
     digitalWrite(luz_cocina, HIGH);
     digitalWrite(luz_cuarto2, HIGH);
     digitalWrite(luz_cuarto1, HIGH);
     digitalWrite(luz_banio, HIGH);
+    switch_banio=true;
     digitalWrite(luz_alarma, HIGH);
     digitalWrite(luz_entrada, HIGH);
     digitalWrite(luz_puerta, HIGH);
+    switch_puerta=true;
   }
   else{
     digitalWrite(luz_comedor, LOW);
+    switch_comedor=false;
     digitalWrite(luz_cocina, LOW);
     digitalWrite(luz_cuarto2, LOW);
     digitalWrite(luz_cuarto1, LOW);
     digitalWrite(luz_banio, LOW);
+    switch_banio=false;;
     digitalWrite(luz_alarma, LOW);
     digitalWrite(luz_entrada, LOW);
     digitalWrite(luz_puerta, LOW);
+    switch_puerta=false;
   }
 }
