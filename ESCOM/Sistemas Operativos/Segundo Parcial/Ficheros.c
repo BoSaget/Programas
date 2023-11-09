@@ -1,3 +1,9 @@
+/*
+    Grupo 4VC2
+    Integrantes:    TEJEDA MOYAO LEON FRANCISCO
+                    TELLEZ PARTIDA MARIO IAHVEH
+    Ejercicio 3 de los ficheros
+*/
 #include <stdio.h>      // Inclusión de la biblioteca estándar de entrada/salida.
 #include <stdlib.h>     // Inclusión de la biblioteca estándar para funciones como exit.
 #include <sys/types.h>  // Necesario para tipos de datos como uid_t.
