@@ -1,5 +1,5 @@
 #include "thingProperties.h"
-
+int luces_encendidas = 0;
 int luz_comedor = 16;
 int luz_cocina = 17;
 int luz_cuarto2 = 5;
@@ -43,27 +43,31 @@ void setup() {
 void loop() {
   ArduinoCloud.update();
   delay(500);
-  if(calendario.isActive() && switch_puerta == false)
+  
+  if(calendario.isActive())
   {
     digitalWrite(luz_puerta, HIGH);
+    switch_puerta = true;
   }
-  else if(switch_puerta == true)
+  else
   {
     digitalWrite(luz_puerta, LOW);
+    switch_puerta = false;
   }
+  
 }
 
 void onCalendarioChange()  {
   /*
-  if(calendario.isActive())
+  if(calendario.isActive() && switch_puerta == false)
   {
-    switch_puerta=true;
     digitalWrite(luz_puerta, HIGH);
+    switch_puerta=true;
   }
-  else
+  else if(switch_puerta == true)
   {
-    switch_puerta=false;
     digitalWrite(luz_puerta, LOW);
+    switch_puerta = false;
   }
   */
 }
@@ -72,9 +76,16 @@ void onSwitchPuertaChange()  {
   // Add your code here to act upon SwitchPuerta change
   if(switch_puerta){
     digitalWrite(luz_puerta, HIGH);
+    switch_luces=true;
+    luces_encendidas++;
   }
   else{
     digitalWrite(luz_puerta, LOW);
+    if(luces_encendidas == 1)
+    {
+      switch_luces=false;
+    }
+    luces_encendidas--;
   }
 }
 
@@ -82,9 +93,16 @@ void onSwitchComedorChange()  {
   // Add your code here to act upon SwitchPuerta change
   if(switch_comedor){
     digitalWrite(luz_comedor, HIGH);
+    switch_luces=true;
+    luces_encendidas++;
   }
   else{
     digitalWrite(luz_comedor, LOW);
+    if(luces_encendidas == 1)
+    {
+      switch_luces=false;
+    }
+    luces_encendidas--;
   }
 }
 
@@ -92,9 +110,16 @@ void onSwitchBanioChange()  {
   // Add your code here to act upon SwitchPuerta change
   if(switch_banio){
     digitalWrite(luz_banio, HIGH);
+    switch_luces=true;
+    luces_encendidas++;
   }
   else{
     digitalWrite(luz_banio, LOW);
+    if(luces_encendidas == 1)
+    {
+      switch_luces=false;
+    }
+    luces_encendidas--;
   }
 }
 void onSwitchLucesChange()  {
@@ -111,6 +136,8 @@ void onSwitchLucesChange()  {
     digitalWrite(luz_entrada, HIGH);
     digitalWrite(luz_puerta, HIGH);
     switch_puerta=true;
+    
+    luces_encendidas = 8;
   }
   else{
     digitalWrite(luz_comedor, LOW);
@@ -124,5 +151,7 @@ void onSwitchLucesChange()  {
     digitalWrite(luz_entrada, LOW);
     digitalWrite(luz_puerta, LOW);
     switch_puerta=false;
+    
+    luces_encendidas = 0;
   }
 }
