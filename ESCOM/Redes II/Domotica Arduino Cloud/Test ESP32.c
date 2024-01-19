@@ -1,6 +1,21 @@
-//Nota: Para esto, se utilizó un ESP32 
-//MODELO: DOIT ESP32 DEVKIT V1
+/*
+Nota: Para esto, se utilizó un ESP32 
+MODELO: DOIT ESP32 DEVKIT V1
 
+--Espacio Personal
+Device ID:
+9ba5d159-f1e0-4c56-83e4-bf7d16252539
+
+Secret Key:
+ORMFGTPBCIOAQDRXWZSR
+
+--Espacio Compartido--
+Device ID:
+7bc70465-b669-4a64-a90f-530bf1d13d2b
+
+SecretKey:
+WMM0ONBISPSLIBU4WB4B
+*/
 #include "thingProperties.h"
 
 int LED = 2;
