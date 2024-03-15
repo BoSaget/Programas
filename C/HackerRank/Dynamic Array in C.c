@@ -20,19 +20,19 @@ int main()
     int total_number_of_queries;
     scanf("%d", &total_number_of_queries);
     
-    total_number_of_books= (int*) malloc (total_number_of_shelves*sizeof(int));
-    total_number_of_pages= (int**) malloc (total_number_of_shelves*sizeof(int*));
+    total_number_of_books= (int*) malloc (100000*sizeof(int));
+    total_number_of_pages= (int**) malloc (100000*sizeof(int*));
     
-    for(int i=0; i<total_number_of_shelves; i++)
+    for(int i=0; i<100000; i++)
     {
     	total_number_of_books[i] = 0;
-    	total_number_of_pages[i] = (int*) malloc (total_number_of_shelves*sizeof(int));;
+    	total_number_of_pages[i] = (int*) malloc (1100*sizeof(int));;
 	}
 	
-	for(int i=0; i<total_number_of_shelves; i++)
+	for(int i=0; i<100000; i++)
     {
     	total_number_of_books[i] = 0;
-    	for(int j=0; j<total_number_of_queries; j++)
+    	for(int j=0; j<1100; j++)
     	{
     		total_number_of_pages[i][j] = 0;
 		}
